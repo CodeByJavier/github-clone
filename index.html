@@ -1097,226 +1097,286 @@
 
                 </div>
 
+                <!-- MOBILE -->
+
+                <div class="main__mobile-info-box">
+
+                    <div class="main__mobile-add-repositories">
+                        <h2 class="main__mobile-heading">
+                            Principales repositorios
+                        </h2>
+                    </div>
+
+                    <div class="main__mobile-content">
+                        <div class="main__mobile-search-repositories">
+                            <!-- [JS] Filtrar la lista de repositorios de abajo según lo que se escriba. -->
+                            <input type="text" class="aside__search-input" placeholder="Busca un repositorio..." aria-label="Buscar repositorios" value="" autocomplete="off">
+                        </div>
+
+                        <div class="main__mobile-repositories">
+
+                            <!-- [JS] Sólo hay dos escritos a mano. La lista real hay que generarla
+                                recorriendo un array de repositorios. -->
+                            <ul class="main__mobile-repositories-list">
+                                <li>
+                                    <div class="main__mobile-box-repositories-list">
+                                        <a class="main__mobile-repositories-avatar" href="" aria-label="Foto de perfil">
+                                            <img src="https://avatars.githubusercontent.com/u/131628148?s=16&amp;v=4" class=" avatar avatar-user avatar-small circle" width="16" height="16" alt="Pokedex" aria-label="Repository">
+                                        </a>        
+                                        <a class="main__mobile-repositories-link" href="" aria-label="Abrir repositorios">
+                                            CodeByJavier<span>/</span>Portafolio
+                                        </a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="main__mobile-box-repositories-list">
+                                        <a class="main__mobile-repositories-avatar" href="" aria-label="Foto de perfil">
+                                            <img src="https://avatars.githubusercontent.com/u/131628148?s=16&amp;v=4" class=" avatar avatar-user avatar-small circle" width="16" height="16" alt="Pokedex" aria-label="Repository">
+                                        </a>        
+                                        <a class="main__mobile-repositories-link" href="" aria-label="Abrir repositorios">
+                                            CodeByJavier<span>/</span>Pokedex
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="main__mobile-box-button-show">
+
+                            <!-- [JS] Mostrar el resto de repositorios. -->
+                            <button class="main__mobile-button-show" type="button" aria-label="Mostrar mas repositorios">
+                                Mostrar más
+                            </button>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <!-- MOBILE -->
+
                 <div class="main__feed-box">
                     <div class="main__feed">
                         <h2 class="main__feed-heading">Alimentación</h2>
-                        <details class="main__details">
+                        <div class="main__feed-content-details-summary">
+                            <details class="main__details">
+                                <summary class="main__summary btn">
+                                    <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true">
+                                        <path d="M.75 3h14.5a.75.75 0 0 1 0 1.5H.75a.75.75 0 0 1 0-1.5ZM3 7.75A.75.75 0 0 1 3.75 7h8.5a.75.75 0 0 1 0 1.5h-8.5A.75.75 0 0 1 3 7.75Zm3 4a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path>
+                                    </svg>
+                                    <span>Filtro</span>
+                                </summary>
+                                <div class="main__toggle-box">
+                                    <div class="main__toggle-box-container">
+                                        <div class="main__toggle-title-box">
+                                            <span class="main__toggle-menu-title">
+                                                Filtro
+                                            </span>
 
-                            <summary class="main__summary btn">
-                                <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true">
-                                    <path d="M.75 3h14.5a.75.75 0 0 1 0 1.5H.75a.75.75 0 0 1 0-1.5ZM3 7.75A.75.75 0 0 1 3.75 7h8.5a.75.75 0 0 1 0 1.5h-8.5A.75.75 0 0 1 3 7.75Zm3 4a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path>
-                                </svg>
-                                <span>Filtro</span>
-                            </summary>
-
-                            <div class="main__toggle-box">
-                                <div class="main__toggle-box-container">
-                                    <div class="main__toggle-title-box">
-                                        <span class="main__toggle-menu-title">
-                                            Filtro
-                                        </span>
-
-                                        <!-- [JS] El <details> se cierra solo desde su <summary>. Para cerrarlo
-                                            desde este botón hace falta JavaScript. -->
-                                        <button class="main__close-button" type="button">
-                                            <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true">
-                                                <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                    
-                                    <!-- [JS] Guardar qué casillas están marcadas y filtrar el feed con ellas. -->
-                                    <div class="main__menu-checklist">
-
-                                        <div class="main__menu-info">
-                                            <h5>Eventos</h5>
-                                            <p>Actividad que quieres ver en tu feed</p>
+                                            <!-- [JS] El <details> se cierra solo desde su <summary>. Para cerrarlo
+                                                desde este botón hace falta JavaScript. -->
+                                            <button class="main__close-button" type="button">
+                                                <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true">
+                                                    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+                                                </svg>
+                                            </button>
                                         </div>
+                                        
+                                        <!-- [JS] Guardar qué casillas están marcadas y filtrar el feed con ellas. -->
+                                        <div class="main__menu-checklist">
 
-                                        <label class="main__menu--items-to-check btn">
-                                            <div>
-
-                                                <input type="checkbox" name="Announcements" checked="">
-                                                
-                                                <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true">
-                                                    <path d="M3.25 9a.75.75 0 0 1 .75.75c0 2.142.456 3.828.733 4.653a.122.122 0 0 0 .05.064.212.212 0 0 0 .117.033h1.31c.085 0 .18-.042.258-.152a.45.45 0 0 0 .075-.366A16.743 16.743 0 0 1 6 9.75a.75.75 0 0 1 1.5 0c0 1.588.25 2.926.494 3.85.293 1.113-.504 2.4-1.783 2.4H4.9c-.686 0-1.35-.41-1.589-1.12A16.4 16.4 0 0 1 2.5 9.75.75.75 0 0 1 3.25 9Z"></path><path d="M0 6a4 4 0 0 1 4-4h2.75a.75.75 0 0 1 .75.75v6.5a.75.75 0 0 1-.75.75H4a4 4 0 0 1-4-4Zm4-2.5a2.5 2.5 0 1 0 0 5h2v-5Z"></path><path d="M15.59.082A.75.75 0 0 1 16 .75v10.5a.75.75 0 0 1-1.189.608l-.002-.001h.001l-.014-.01a5.775 5.775 0 0 0-.422-.25 10.63 10.63 0 0 0-1.469-.64C11.576 10.484 9.536 10 6.75 10a.75.75 0 0 1 0-1.5c2.964 0 5.174.516 6.658 1.043.423.151.787.302 1.092.443V2.014c-.305.14-.669.292-1.092.443C11.924 2.984 9.713 3.5 6.75 3.5a.75.75 0 0 1 0-1.5c2.786 0 4.826-.484 6.155-.957.665-.236 1.154-.47 1.47-.64.144-.077.284-.161.421-.25l.014-.01a.75.75 0 0 1 .78-.061Z"></path>
-                                                </svg>
-
-                                                <h5>Anuncios</h5>
-
+                                            <div class="main__menu-info">
+                                                <h5>Eventos</h5>
+                                                <p>Actividad que quieres ver en tu feed</p>
                                             </div>
 
-                                            <div>
-                                                <span>                
-                                                    Publicaciones especiales de discusión de repositorios
-                                                </span>
-                                            </div>
-                                        </label>
-                                        <label class="main__menu--items-to-check btn">
-                                            <div>
+                                            <label class="main__menu--items-to-check btn">
+                                                <div>
 
-                                                <input type="checkbox" name="Releases" checked="">
-                                                
-                                                <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true">
-                                                    <path d="M1 7.775V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 0 1 0 2.474l-5.026 5.026a1.75 1.75 0 0 1-2.474 0l-6.25-6.25A1.752 1.752 0 0 1 1 7.775Zm1.5 0c0 .066.026.13.073.177l6.25 6.25a.25.25 0 0 0 .354 0l5.025-5.025a.25.25 0 0 0 0-.354l-6.25-6.25a.25.25 0 0 0-.177-.073H2.75a.25.25 0 0 0-.25.25ZM6 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"></path>
-                                                </svg>
+                                                    <input type="checkbox" name="Announcements" checked="">
+                                                    
+                                                    <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true">
+                                                        <path d="M3.25 9a.75.75 0 0 1 .75.75c0 2.142.456 3.828.733 4.653a.122.122 0 0 0 .05.064.212.212 0 0 0 .117.033h1.31c.085 0 .18-.042.258-.152a.45.45 0 0 0 .075-.366A16.743 16.743 0 0 1 6 9.75a.75.75 0 0 1 1.5 0c0 1.588.25 2.926.494 3.85.293 1.113-.504 2.4-1.783 2.4H4.9c-.686 0-1.35-.41-1.589-1.12A16.4 16.4 0 0 1 2.5 9.75.75.75 0 0 1 3.25 9Z"></path><path d="M0 6a4 4 0 0 1 4-4h2.75a.75.75 0 0 1 .75.75v6.5a.75.75 0 0 1-.75.75H4a4 4 0 0 1-4-4Zm4-2.5a2.5 2.5 0 1 0 0 5h2v-5Z"></path><path d="M15.59.082A.75.75 0 0 1 16 .75v10.5a.75.75 0 0 1-1.189.608l-.002-.001h.001l-.014-.01a5.775 5.775 0 0 0-.422-.25 10.63 10.63 0 0 0-1.469-.64C11.576 10.484 9.536 10 6.75 10a.75.75 0 0 1 0-1.5c2.964 0 5.174.516 6.658 1.043.423.151.787.302 1.092.443V2.014c-.305.14-.669.292-1.092.443C11.924 2.984 9.713 3.5 6.75 3.5a.75.75 0 0 1 0-1.5c2.786 0 4.826-.484 6.155-.957.665-.236 1.154-.47 1.47-.64.144-.077.284-.161.421-.25l.014-.01a.75.75 0 0 1 .78-.061Z"></path>
+                                                    </svg>
 
-                                                <h5>Lanzamientos</h5>
+                                                    <h5>Anuncios</h5>
 
-                                            </div>
+                                                </div>
 
-                                            <div>
-                                                <span>
-                                                    Actualizaciones de los repositorios
-                                                </span>
-                                            </div>
-                                        </label>
-                                        <label class="main__menu--items-to-check btn">
-                                            <div>
+                                                <div>
+                                                    <span>                
+                                                        Publicaciones especiales de discusión de repositorios
+                                                    </span>
+                                                </div>
+                                            </label>
+                                            <label class="main__menu--items-to-check btn">
+                                                <div>
 
-                                                <input type="checkbox" name="Sponsors" checked="">
-                                                
-                                                <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true">
-                                                    <path d="m8 14.25.345.666a.75.75 0 0 1-.69 0l-.008-.004-.018-.01a7.152 7.152 0 0 1-.31-.17 22.055 22.055 0 0 1-3.434-2.414C2.045 10.731 0 8.35 0 5.5 0 2.836 2.086 1 4.25 1 5.797 1 7.153 1.802 8 3.02 8.847 1.802 10.203 1 11.75 1 13.914 1 16 2.836 16 5.5c0 2.85-2.045 5.231-3.885 6.818a22.066 22.066 0 0 1-3.744 2.584l-.018.01-.006.003h-.002ZM4.25 2.5c-1.336 0-2.75 1.164-2.75 3 0 2.15 1.58 4.144 3.365 5.682A20.58 20.58 0 0 0 8 13.393a20.58 20.58 0 0 0 3.135-2.211C12.92 9.644 14.5 7.65 14.5 5.5c0-1.836-1.414-3-2.75-3-1.373 0-2.609.986-3.029 2.456a.749.749 0 0 1-1.442 0C6.859 3.486 5.623 2.5 4.25 2.5Z"></path>
-                                                </svg>
+                                                    <input type="checkbox" name="Releases" checked="">
+                                                    
+                                                    <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true">
+                                                        <path d="M1 7.775V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 0 1 0 2.474l-5.026 5.026a1.75 1.75 0 0 1-2.474 0l-6.25-6.25A1.752 1.752 0 0 1 1 7.775Zm1.5 0c0 .066.026.13.073.177l6.25 6.25a.25.25 0 0 0 .354 0l5.025-5.025a.25.25 0 0 0 0-.354l-6.25-6.25a.25.25 0 0 0-.177-.073H2.75a.25.25 0 0 0-.25.25ZM6 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"></path>
+                                                    </svg>
 
-                                                <h5>Patrocinadores</h5>
+                                                    <h5>Lanzamientos</h5>
 
-                                            </div>
+                                                </div>
 
-                                            <div>
-                                                <span>
-                                                    Proyectos o personas relevantes que están siendo patrocinadas
-                                                </span>
-                                            </div>
-                                        </label>
-                                        <label class="main__menu--items-to-check btn">
-                                            <div>
+                                                <div>
+                                                    <span>
+                                                        Actualizaciones de los repositorios
+                                                    </span>
+                                                </div>
+                                            </label>
+                                            <label class="main__menu--items-to-check btn">
+                                                <div>
 
-                                                <input type="checkbox" name="Stars" checked="">
-                                                
-                                                <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true">
-                                                    <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Zm0 2.445L6.615 5.5a.75.75 0 0 1-.564.41l-3.097.45 2.24 2.184a.75.75 0 0 1 .216.664l-.528 3.084 2.769-1.456a.75.75 0 0 1 .698 0l2.77 1.456-.53-3.084a.75.75 0 0 1 .216-.664l2.24-2.183-3.096-.45a.75.75 0 0 1-.564-.41L8 2.694Z"></path>
-                                                </svg>
+                                                    <input type="checkbox" name="Sponsors" checked="">
+                                                    
+                                                    <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true">
+                                                        <path d="m8 14.25.345.666a.75.75 0 0 1-.69 0l-.008-.004-.018-.01a7.152 7.152 0 0 1-.31-.17 22.055 22.055 0 0 1-3.434-2.414C2.045 10.731 0 8.35 0 5.5 0 2.836 2.086 1 4.25 1 5.797 1 7.153 1.802 8 3.02 8.847 1.802 10.203 1 11.75 1 13.914 1 16 2.836 16 5.5c0 2.85-2.045 5.231-3.885 6.818a22.066 22.066 0 0 1-3.744 2.584l-.018.01-.006.003h-.002ZM4.25 2.5c-1.336 0-2.75 1.164-2.75 3 0 2.15 1.58 4.144 3.365 5.682A20.58 20.58 0 0 0 8 13.393a20.58 20.58 0 0 0 3.135-2.211C12.92 9.644 14.5 7.65 14.5 5.5c0-1.836-1.414-3-2.75-3-1.373 0-2.609.986-3.029 2.456a.749.749 0 0 1-1.442 0C6.859 3.486 5.623 2.5 4.25 2.5Z"></path>
+                                                    </svg>
 
-                                                <h5>Estrellas</h5>
+                                                    <h5>Patrocinadores</h5>
 
-                                            </div>
+                                                </div>
 
-                                            <div>
-                                                <span>
-                                                    Repositorios siendo estrellados por personas
-                                                </span>
-                                            </div>
-                                        </label>
-                                        <label class="main__menu--items-to-check btn">
-                                            <div>
+                                                <div>
+                                                    <span>
+                                                        Proyectos o personas relevantes que están siendo patrocinadas
+                                                    </span>
+                                                </div>
+                                            </label>
+                                            <label class="main__menu--items-to-check btn">
+                                                <div>
 
-                                                <input type="checkbox" name="Repositories" checked="">
-                                                
-                                                <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true">
-                                                    <path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path>
-                                                </svg>
+                                                    <input type="checkbox" name="Stars" checked="">
+                                                    
+                                                    <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true">
+                                                        <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Zm0 2.445L6.615 5.5a.75.75 0 0 1-.564.41l-3.097.45 2.24 2.184a.75.75 0 0 1 .216.664l-.528 3.084 2.769-1.456a.75.75 0 0 1 .698 0l2.77 1.456-.53-3.084a.75.75 0 0 1 .216-.664l2.24-2.183-3.096-.45a.75.75 0 0 1-.564-.41L8 2.694Z"></path>
+                                                    </svg>
 
-                                                <h5>Repositorios</h5>
+                                                    <h5>Estrellas</h5>
 
-                                            </div>
+                                                </div>
 
-                                            <div>
-                                                <span>
-                                                    Repositorios creados o bifurcados por personas
-                                                </span>
-                                            </div>
-                                        </label>
-                                        <label class="main__menu--items-to-check btn">
-                                            <div>
+                                                <div>
+                                                    <span>
+                                                        Repositorios siendo estrellados por personas
+                                                    </span>
+                                                </div>
+                                            </label>
+                                            <label class="main__menu--items-to-check btn">
+                                                <div>
 
-                                                <input type="checkbox" name="Repository-activity" checked="">
-                                                
-                                                <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true">
-                                                    <path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path>
-                                                </svg>
+                                                    <input type="checkbox" name="Repositories" checked="">
+                                                    
+                                                    <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true">
+                                                        <path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path>
+                                                    </svg>
 
-                                                <h5>Actividad en el repositorio</h5>
+                                                    <h5>Repositorios</h5>
 
-                                            </div>
+                                                </div>
 
-                                            <div>
-                                                <span>
-                                                    Problemas y solicitudes de pull desde repositorios
-                                                </span>
-                                            </div>
-                                        </label>
-                                        <label class="main__menu--items-to-check btn">
-                                            <div>
+                                                <div>
+                                                    <span>
+                                                        Repositorios creados o bifurcados por personas
+                                                    </span>
+                                                </div>
+                                            </label>
+                                            <label class="main__menu--items-to-check btn">
+                                                <div>
 
-                                                <input type="checkbox" name="Follows" checked="">
-                                                
-                                                <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true">
-                                                    <path d="M7.9 8.548h-.001a5.528 5.528 0 0 1 3.1 4.659.75.75 0 1 1-1.498.086A4.01 4.01 0 0 0 5.5 9.5a4.01 4.01 0 0 0-4.001 3.793.75.75 0 1 1-1.498-.085 5.527 5.527 0 0 1 3.1-4.66 3.5 3.5 0 1 1 4.799 0ZM13.25 0a.75.75 0 0 1 .75.75V2h1.25a.75.75 0 0 1 0 1.5H14v1.25a.75.75 0 0 1-1.5 0V3.5h-1.25a.75.75 0 0 1 0-1.5h1.25V.75a.75.75 0 0 1 .75-.75ZM5.5 4a2 2 0 1 0-.001 3.999A2 2 0 0 0 5.5 4Z"></path>
-                                                </svg>
-                                                
-                                                <h5>Sigue</h5>
+                                                    <input type="checkbox" name="Repository-activity" checked="">
+                                                    
+                                                    <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true">
+                                                        <path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path>
+                                                    </svg>
 
-                                            </div>
+                                                    <h5>Actividad en el repositorio</h5>
 
-                                            <div>
-                                                <span>
-                                                    A quién sigue la gente
-                                                </span>
-                                            </div>
-                                        </label>
-                                        <label class="main__menu--items-to-check btn">
-                                            <div>
+                                                </div>
 
-                                                <input type="checkbox" name="Recommendations" checked="">
-                                                
-                                                <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true">
-                                                    <path d="M6.766 11.328c-2.063-.25-3.516-1.734-3.516-3.656 0-.781.281-1.625.75-2.188-.203-.515-.172-1.609.063-2.062.625-.078 1.468.25 1.968.703.594-.187 1.219-.281 1.985-.281.765 0 1.39.094 1.953.265.484-.437 1.344-.765 1.969-.687.218.422.25 1.515.046 2.047.5.593.766 1.39.766 2.203 0 1.922-1.453 3.375-3.547 3.64.531.344.89 1.094.89 1.954v1.625c0 .468.391.734.86.547C13.781 14.359 16 11.53 16 8.03 16 3.61 12.406 0 7.984 0 3.563 0 0 3.61 0 8.031a7.88 7.88 0 0 0 5.172 7.422c.422.156.828-.125.828-.547v-1.25c-.219.094-.5.156-.75.156-1.031 0-1.64-.562-2.078-1.609-.172-.422-.36-.672-.719-.719-.187-.015-.25-.093-.25-.187 0-.188.313-.328.625-.328.453 0 .844.281 1.25.86.313.452.64.655 1.031.655s.641-.14 1-.5c.266-.265.47-.5.657-.656"></path>
-                                                </svg>
+                                                <div>
+                                                    <span>
+                                                        Problemas y solicitudes de pull desde repositorios
+                                                    </span>
+                                                </div>
+                                            </label>
+                                            <label class="main__menu--items-to-check btn">
+                                                <div>
 
-                                                <h5>Recomendaciones</h5>
+                                                    <input type="checkbox" name="Follows" checked="">
+                                                    
+                                                    <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true">
+                                                        <path d="M7.9 8.548h-.001a5.528 5.528 0 0 1 3.1 4.659.75.75 0 1 1-1.498.086A4.01 4.01 0 0 0 5.5 9.5a4.01 4.01 0 0 0-4.001 3.793.75.75 0 1 1-1.498-.085 5.527 5.527 0 0 1 3.1-4.66 3.5 3.5 0 1 1 4.799 0ZM13.25 0a.75.75 0 0 1 .75.75V2h1.25a.75.75 0 0 1 0 1.5H14v1.25a.75.75 0 0 1-1.5 0V3.5h-1.25a.75.75 0 0 1 0-1.5h1.25V.75a.75.75 0 0 1 .75-.75ZM5.5 4a2 2 0 1 0-.001 3.999A2 2 0 0 0 5.5 4Z"></path>
+                                                    </svg>
+                                                    
+                                                    <h5>Sigue</h5>
 
-                                            </div>
+                                                </div>
 
-                                            <div>
-                                                <span>
-                                                    Repositorios y personas que te puedan gustar
-                                                </span>
-                                            </div>
-                                        </label>
-                                        <div class="divider"></div>
-                                        <label class="main__menu--items-to-check btn">
-                                            <div>
+                                                <div>
+                                                    <span>
+                                                        A quién sigue la gente
+                                                    </span>
+                                                </div>
+                                            </label>
+                                            <label class="main__menu--items-to-check btn">
+                                                <div>
 
-                                                <input type="checkbox" name="Events" checked="">
-                                                
-                                                <h5>Incluye eventos de repositorios con estrellas</h5>
+                                                    <input type="checkbox" name="Recommendations" checked="">
+                                                    
+                                                    <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true">
+                                                        <path d="M6.766 11.328c-2.063-.25-3.516-1.734-3.516-3.656 0-.781.281-1.625.75-2.188-.203-.515-.172-1.609.063-2.062.625-.078 1.468.25 1.968.703.594-.187 1.219-.281 1.985-.281.765 0 1.39.094 1.953.265.484-.437 1.344-.765 1.969-.687.218.422.25 1.515.046 2.047.5.593.766 1.39.766 2.203 0 1.922-1.453 3.375-3.547 3.64.531.344.89 1.094.89 1.954v1.625c0 .468.391.734.86.547C13.781 14.359 16 11.53 16 8.03 16 3.61 12.406 0 7.984 0 3.563 0 0 3.61 0 8.031a7.88 7.88 0 0 0 5.172 7.422c.422.156.828-.125.828-.547v-1.25c-.219.094-.5.156-.75.156-1.031 0-1.64-.562-2.078-1.609-.172-.422-.36-.672-.719-.719-.187-.015-.25-.093-.25-.187 0-.188.313-.328.625-.328.453 0 .844.281 1.25.86.313.452.64.655 1.031.655s.641-.14 1-.5c.266-.265.47-.5.657-.656"></path>
+                                                    </svg>
 
-                                            </div>
+                                                    <h5>Recomendaciones</h5>
 
-                                            <div>
-                                                <span>
-                                                    Por defecto, el feed muestra eventos de repositorios que patrocinas o ves, y de personas que sigues.
-                                                </span>
-                                            </div>
-                                        </label>
-                                    </div>
-                                    <div class="main__menu__button-save">
+                                                </div>
 
-                                        <button class="btn">
-                                            <span>Reset to default</span>
-                                        </button>
+                                                <div>
+                                                    <span>
+                                                        Repositorios y personas que te puedan gustar
+                                                    </span>
+                                                </div>
+                                            </label>
+                                            <div class="divider"></div>
+                                            <label class="main__menu--items-to-check btn">
+                                                <div>
 
-                                        <button>
-                                            <span>Save</span>
-                                        </button>
+                                                    <input type="checkbox" name="Events" checked="">
+                                                    
+                                                    <h5>Incluye eventos de repositorios con estrellas</h5>
 
+                                                </div>
+
+                                                <div>
+                                                    <span>
+                                                        Por defecto, el feed muestra eventos de repositorios que patrocinas o ves, y de personas que sigues.
+                                                    </span>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        <div class="main__menu__button-save">
+
+                                            <button class="btn">
+                                                <span>Reset to default</span>
+                                            </button>
+
+                                            <button>
+                                                <span>Save</span>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            
-                        </details>
+                            </details>
+                            <button title="Explorar" aria-label="Abrir menú de exploración" type="button" class="main__button-toggle-left-bar btn">  
+                                    <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true">
+                                        <path d="m4.177 7.823 2.396-2.396A.25.25 0 0 1 7 5.604v4.792a.25.25 0 0 1-.427.177L4.177 8.177a.25.25 0 0 1 0-.354Z"></path><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25H9.5v-13Zm12.5 13a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25H11v13Z"></path>
+                                    </svg>
+                            </button>
+                        </div>
                     </div>
                     <!-- [AÑADIDO] [JS] Dos tarjetas de muestra. El feed real hay que generarlo
                             a partir de datos -->
