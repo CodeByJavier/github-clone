@@ -1292,7 +1292,7 @@ footer{
         color: var(--color-accent-fg);
     }
 
-    .main__feed > details > div{
+    .main__feed > .main__feed-content-details-summary > details > div{
         position: fixed;
         top: calc(var(--header-height) + var(--space-2));
         left: 1rem;
@@ -1300,7 +1300,7 @@ footer{
         bottom: 1rem;
         margin: 0; 
     }
-    .main__feed > details > div > div{
+    .main__feed .main__feed-content-details-summary > details > div > div{
         display: flex;
         flex-direction: column;
         flex: 1;
@@ -1325,8 +1325,12 @@ footer{
 
 @media (max-width: 33.875rem){
 
-    .main__feed > details > div{
+    .main__feed .main__feed-content-details-summary > details > div{
         width: unset;    
+    }
+
+    .top-bar__add-repositories > button{
+        display: none;
     }
     
 }
