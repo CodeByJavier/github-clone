@@ -60,9 +60,9 @@
     /* Tipografía */
     --font-sans: "Mona Sans VF", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans Backtick Fix", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
 
-    --text-xs: 0.75rem;    /* 12px */
-    --text-sm: 0.875rem;   /* 14px */
-    --text-base: 1rem;     /* 16px */
+    --text-xs: 0.875rem;    /* 12px */
+    --text-sm: 1rem;   /* 14px */
+    --text-base: 1.125rem;     /* 16px */
 
     --leading-tight: 1.25;
     --leading-normal: 1.5;
@@ -87,6 +87,7 @@
     --layer-modal: 1000;
 
     --header-height: 4rem;
+    --menu-width: 15rem;
 }
 
 .btn{
@@ -657,6 +658,11 @@ main .main__top-content{
     max-height: 15.75rem;
     field-sizing: content;
     resize:none;
+    outline: transparent;
+}
+
+.main__form:focus-within{
+    outline: solid 2px var(--color-accent-emphasis);
 }
 
 .main__text-area-box textarea::placeholder{
@@ -684,14 +690,15 @@ main .main__top-content{
 .main__repositories-module div,
 .main__add-repositories{
     display: flex;
-
-    padding: 0 .75rem;
     border: var(--color-border-muted) solid 1px;
     border-radius: var(--radius-md);
     font-size: var(--text-sm);
     font-weight: 500;
     height: 2rem;
-    
+}
+.main__ask-box-module button, 
+.main__repositories-module > div > .main__repositories-button{
+    padding: 0 .75rem;
 }
 
 .main__ask-box-module button span svg, 
@@ -700,6 +707,10 @@ main .main__top-content{
     color: var(--color-fg-muted);
 }
 
+.main__ask-box-module button span svg, 
+#repositories-button > span:nth-child(1) > span:nth-child(1) > svg{
+    margin-right: .3rem;
+}
 
 .main__copilot-info-module{
     display: flex;
@@ -709,6 +720,26 @@ main .main__top-content{
     height: 2rem;
     font-size: var(--text-sm);
 }
+
+#ask-mode-button,
+#repositories-button,
+.main__add-repositories.btn > button,
+#ask-mode-button > span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#ask-mode-button > span.hidde-mobile,
+#repositories-button > span,
+.main__add-repositories.btn > button > span{
+    display: flex;
+    align-items: center;
+}
+#ask-mode-button > span.hidde-mobile,
+#repositories-button > span{
+    margin-left: .3rem;
+}
+
 
 .main__copilot-info-module .main__copilot-models-button{
     display: flex;
@@ -792,6 +823,7 @@ main .main__top-content{
 }
 
 .main__feed summary{
+    cursor: pointer;
     padding: .3rem .75rem;
     background-color: var(--color-btn-bg);
     border: var(--color-border-default) solid 1px;
@@ -1013,12 +1045,15 @@ main .main__top-content{
     list-style: none;
     font-weight: 600;
     display: flex;
+    align-items: center;
 }
 
 .main__feed-star-button{
     padding: .2rem .75rem;
     border-right: var(--color-border-default) solid 1px;
     border-radius: var(--radius-md) 0 0 var(--radius-md);
+    display: flex;
+    align-items: center;
 }
 
 .main__feed-star-button svg{
@@ -1030,6 +1065,8 @@ main .main__top-content{
     padding: 0 .3rem 0 .2rem;
     color: var(--color-fg-muted);
     border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    display: flex;
+    align-items: center;
 }
 
 
@@ -1133,15 +1170,17 @@ footer{
     .top-bar__search-button > span {
         display: none;
     }
+
+    .main__ask-box-module button,
+    #repositories-button{
+        padding: 0 0.3rem;
+    }
     .main__toggle-box{
         left: 20rem;
     }
     .footer__content{
         flex-direction: column-reverse;
         gap: 0.5rem;
-    }
-
-    .main__feed summary{
     }
 
     .main__button-toggle-left-bar{
@@ -1168,6 +1207,15 @@ footer{
     .main__copilot-info-module{
         flex-basis: 100%;
     }
+    #search-box > div{
+        left: 0;
+        width: 100%;
+    }
+    .main__ask-box-module button,
+    #repositories-button{
+        padding: 0 0.3rem;
+    }
+
 }
 
 /* --------------------------------------------------------------------------
@@ -1179,7 +1227,12 @@ footer{
     .top-bar__repositories-info,
     .top-bar__divider-bar,
     .top-bar__copilot-chat{
-        display: none;
+        position: absolute;
+        top: -1000000px;
+    }
+    .backdrop-left-bar{
+        position: relative;
+        z-index: 10000;
     }
 
     .box-main{
@@ -1196,8 +1249,18 @@ footer{
         padding: 0 .5rem;
     }
 
-    .hidde-mobile{
+    .hidde-mobile,
+    #module-right > div.top-bar__buttons-group > div.top-bar__copilot-chat{
         display: none;
+    }
+
+    .main__ask-box-module button span svg, 
+    #repositories-button > span:nth-child(1) > span:nth-child(1) > svg,
+    #repositories-button > span:nth-child(1){
+        margin: 0;
+    }
+    #repositories-button{
+        display: block;
     }
 
     .main__copilot-info-module{
@@ -1209,16 +1272,16 @@ footer{
     }
 
     .main__mobile-info-box{
-    display: flex;
-    flex-direction: column;
-    margin: 0.5rem 0 1.5rem 0;
+        display: flex;
+        flex-direction: column;
+        margin: 0.5rem 0 1.5rem 0;
     }
 
     .main__mobile-add-repositories{
-    display: flex;
-    font-size: var(--text-sm);
+        display: flex;
+        font-size: var(--text-sm);
 
-    margin-bottom: 1.5rem;
+        margin-bottom: 1.5rem;
     }
 
     .main__mobile-content{
@@ -1271,7 +1334,6 @@ footer{
 
     .main__mobile-repositories-list li div a:last-child:hover{
         text-decoration: underline;
-
     }
 
     .main__mobile-box-button-show{
@@ -1294,7 +1356,7 @@ footer{
 
     .main__feed > .main__feed-content-details-summary > details > div{
         position: fixed;
-        top: calc(var(--header-height) + var(--space-2));
+        top: calc(var(--header-height) + .5rem);
         left: 1rem;
         right: 1rem;
         bottom: 1rem;
@@ -1317,7 +1379,19 @@ footer{
     .main__toggle-box{
         z-index: var(--layer-modal);
     }
+
+    #close-avatar{
+        display: block;
+    }
+
+    #avatar-menu{
+        position: fixed;
+        width: 100%;
+        inset: 0;
+        max-height: none
+    }
 }
+
 
 /* --------------------------------------------------------------------------
    15. @MEDIA 542px
@@ -1333,4 +1407,553 @@ footer{
         display: none;
     }
     
+}
+
+/* --------------------------------------------------------------------------
+   16. HTML-FROM-JAVASCRIPT LEFT-MENU
+   -------------------------------------------------------------------------- */
+
+[aria-controls][aria-expanded="true"]{
+    background-color: var(--color-btn-hover-bg);
+}
+
+.backdrop-left-bar,
+.backdrop-top-bar {
+    animation: .2s cubic-bezier(.33, 1, .68, 1);
+    display: flex;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(17, 22, 32, 0.511);
+    z-index: 1000;
+}
+
+.left-bar{  
+    position: fixed;
+    inset: 0;
+    width: 20rem;
+
+    background-color: var(--color-header-bg);
+    border-right: var(--color-border-default) solid 1px;
+
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    max-height: 100dvh;
+    overflow-y: auto;
+
+    animation-name: animated-left-bar;
+    animation-duration: .3s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+}
+
+@keyframes animated-left-bar {
+  from {
+    transform: translateX(-20rem);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.left-bar__header,
+.left-bar__bottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;   
+    margin-bottom: .25rem;
+}
+
+.left-bar__header button{
+    display: flex;
+    align-items: center;
+    padding: .5rem;
+    color: var(--color-fg-muted);
+    border-radius: var(--radius-md);
+}
+
+.left-bar__nav{
+    padding: .5rem;
+}
+
+/* -- 16.1 LEFT-BAR-LISTS -- */
+
+.left-bar__top-items,
+.left-bar__middle-items,
+.left-bar__bottom-items-list{
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    margin: 0 .5rem;
+}
+
+.left-bar__top-items-list li,
+.left-bar__middle-items-list li,
+.left-bar__bottom-items-list li{
+    padding: .38rem .5rem;
+    font-size: var(--text-sm);
+    border-radius: var(--radius-md);
+    color: var(--color-fg-default);
+}
+
+.left-bar__top-items-list li a span svg,
+.left-bar__middle-items-list li a span svg,
+.left-bar__bottom-items-list li a span svg,
+.left-bar__bottom-items-list li a span img{
+    color: var(--color-fg-muted);
+    margin-right: .5rem;
+}
+
+.left-bar__top-items-list li a span:last-child,
+.left-bar__middle-items-list li a span:last-child,
+.left-bar__bottom-items-list li a span:last-child{
+    color: var(--color-fg-default);
+}
+
+.left-bar__divider{
+    width: 100%;
+    border-top: var(--color-border-default) solid 1px;
+    margin: .45rem 0;
+}
+
+.left-bar__bottom{
+    color: var(--color-fg-muted);
+    font-size: var(--text-xs);
+    padding: .38rem .5rem;
+}
+
+.left-bar__bottom-items-list .search-repo-input-menu-box{
+    display: flex;
+    align-items: center;
+    padding: 0.25rem .5rem;
+    margin-right: .25rem;
+    font-size: var(--text-sm);
+    background-color: var(--color-canvas-default);
+    border-radius: var(--radius-md);
+    border: var(--color-border-default) solid 1px;
+}
+.search-repo-input-menu-box:focus-within{
+    outline: solid 2px var(--color-accent-emphasis);
+}
+
+.left-bar__bottom-items-list .search-repo-input-menu-box svg,
+.left-bar__bottom-items-list .search-repo-input-menu-box input::placeholder{
+    margin-right: 0.5rem;
+    color: var(--color-fg-muted);
+}
+
+.left-bar__bottom-items-list .search-repo-input-menu-box input{
+    background-color: transparent;
+    width: 100%;
+    border: none;
+    outline: none;
+}
+
+
+.left-bar__button-search{
+    padding: .5rem;
+    border-radius: var(--radius-md);
+}
+
+.left-bar__bottom-items-list li a{
+    display: flex;
+}
+
+.left-bar__button-show{
+    color: var(--color-fg-muted);
+    font-size: var(--text-xs);
+    padding: .65rem .5rem;
+}
+
+.left-bar__bottom-items > ul > li:last-child{
+    padding: 0;
+}
+
+.left-bar__button-show:hover{
+    color: var(--color-accent-fg);
+}
+
+/* --------------------------------------------------------------------------
+   17. HTML-FROM-JAVASCRIPT SHOW-SEARCH-BAR
+   -------------------------------------------------------------------------- */
+
+.search-bar{
+    position: absolute;
+    top: 0.2rem;
+    left: 5.5rem;
+    width: min(840px, 100% - 5.5rem -  5.5rem);
+
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    overflow: hidden;
+    background-color: var(--color-header-bg);
+    border-radius: var(--radius-lg);
+    border: var(--color-border-default) solid 1px;
+
+    z-index: var(--layer-modal);
+    animation: smooth .2s ease-in-out;
+}
+
+@keyframes smooth{
+    from{
+        opacity: 0;
+        transform: translateY(-0.5rem);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.search-bar__input{
+    margin: 0.75rem;
+    padding: 0.2rem;
+    display: inline-flex;
+    align-items: center;
+    font-size: var(--text-sm);
+    background-color: var(--color-canvas-default);
+    border-radius: var(--radius-md);
+    border: var(--color-border-default) solid 1px;
+}
+
+.search-bar__input:focus-within{
+    outline: solid 2px var(--color-accent-emphasis);
+}
+
+.search-bar__input span{
+    display: inline-flex;
+    align-items: center;
+    flex: 1;
+}
+
+.search-bar__input span svg,
+.search-bar__repositories-items li a span svg,
+.search-bar__divider a span svg{
+    display: flex;
+    align-items: center;
+    margin: 0 0.5rem 0 .5rem;
+    color: var(--color-fg-muted);
+}
+
+.search-bar__input input{
+    background-color: transparent;
+    width: 100%;
+    border: none;
+    outline: transparent;
+}
+.search-bar__input input::placeholder{
+    color: var(--color-fg-muted)
+}
+
+.search-bar__repositories-header,
+.search-bar__divider div span {
+    padding: .35rem .75rem;
+    font-size: var(--text-xs);
+    color: var(--color-fg-muted)
+}
+
+.search-bar__repositories-items li{
+    display: flex;   
+    margin: 0 .5rem;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+}
+
+.search-bar__repositories-items li a,
+.search-bar__divider a,
+.search-bar__footer div{
+    display: flex;
+    width: 100%;
+    padding: .35rem .75rem;
+}
+
+.search-bar__repositories-list-box > ul > li > a > span:last-child{
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--text-xs);
+}
+
+.search-bar__repositories-list-box > ul > li > a > span:nth-child(2) > span:nth-child(2){
+    color: var(--color-fg-muted)
+}
+.search-bar__divider > a > span:nth-child(2) > span:nth-child(1){
+    color: var(--color-fg-default);
+}
+
+.search-bar__divider{
+    border-top: var(--color-border-default) solid 1px;
+    border-bottom: var(--color-border-default) solid 1px;
+    padding: .75rem 0;
+    margin: .75rem .5rem 0 .5rem;
+}
+
+.search-bar__divider a{
+    display: flex;
+    justify-content: space-between;
+    padding: .5rem .75rem;
+    cursor: pointer;
+}
+
+.search-bar__divider div span{
+    padding: .35rem 1.25rem;
+    margin: .5rem 0;
+}
+
+.search-bar__divider div{
+    margin-bottom: .5rem;
+}
+
+#nav > div > div > div.search-bar__repositories > ul > li.search-bar__divider > a > span:nth-child(2){
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--text-xs)
+}
+.search-bar__footer div{
+    justify-content: space-between;
+}
+.search-bar__footer{
+    display: flex;
+    margin: 0 0.5rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.search-bar__footer a,
+.search-bar__footer button{
+    cursor: pointer;
+    font-size: var(--text-xs);
+    color: var(--color-accent-fg);
+}
+
+.search-bar__footer a:hover,
+.search-bar__footer button:hover{
+    text-decoration: underline;
+}
+/* --------------------------------------------------------------------------
+   18. HTML-FROM-JAVASCRIPT TOGGLE MENU
+   --------------------------------------------------------------------------  */
+
+.top-bar__copilot-chat,
+.top-bar__add-repositories,
+.top-bar__avatar,
+.main__ask-box-module,
+.main__select-repositories,
+.main__copilot-models-box,
+.main__commands-list > li{
+    position: relative;
+}
+
+.menu{
+    position: absolute;
+    z-index: var(--layer-overlay); 
+    width: var(--menu-width);
+    max-width: calc(100vw - var(--space-4));
+    max-height: calc(100vh - var(--header-height) - var(--space-4));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+
+    padding: .5rem;
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+    color: var(--color-fg-default);
+    text-align: left;
+    background-color: var(--color-header-bg);
+    border: var(--color-border-default) solid 1px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-overlay);
+
+    animation: smooth .2s ease-in-out;
+}
+
+.menu__item a,
+.menu__content{
+    border: none;
+    color: var(--color-fg-default);
+}
+
+.menu__list,
+.menu__group-list{
+    display: flex;
+    flex-direction: column;
+}
+
+.menu__content{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+
+    width: 100%;
+    min-height: 2rem;
+    padding: .25rem .5rem;
+    color: var(--color-fg-default);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+
+    transition: background-color 80ms cubic-bezier(.65, 0, .35, 1);
+}
+
+.menu__content:hover{
+    background-color: var(--color-btn-hover-bg);
+    text-decoration: none;
+}
+
+.menu__leading-visual,
+.menu__trailing-visual{
+    display: inline-flex;
+    flex-shrink: 0;
+    color: var(--color-fg-muted);
+}
+
+.menu__trailing-visual,
+.menu__trailing-label{
+    margin-left: auto;
+}
+
+.menu__trailing-label{
+    flex-shrink: 0;
+    padding: .25rem .5rem;
+    font-size: var(--text-xs);
+    line-height: var(--leading-tight);
+    color: var(--color-fg-on-emphasis);
+    border: var(--color-border-default) 1px solid;
+    border-radius: 2rem;
+}
+
+.menu__label{
+    min-width: 0;
+}
+
+.menu__group-heading{
+    display: block;
+    padding: .25rem .5rem;
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--color-fg-muted);
+}
+
+.menu__divider{
+    height: 1px;
+    margin: .5rem calc(.5rem * -1);
+    background-color: var(--color-border-muted);
+}
+
+.top-bar__copilot-menu,
+.top-bar__add-menu,
+.top-bar__avatar-menu{
+    top: calc(100% + .5rem);
+    right: 0;
+}
+
+.top-bar__avatar-menu{
+    --menu-width: 18rem;
+}
+
+.main__ask-menu,
+.main__repositories-menu{
+    top: calc(100% + .5rem);
+    left: 50%;
+    --menu-width: 16rem;
+}
+
+.main__models-menu{
+    top: calc(100% + 1rem);
+    left: -70%;
+    --menu-width: 16rem;
+}
+
+.main__ask-menu,
+.main__repositories-menu{
+    left: 0;
+}
+
+#repositories-menu{
+    padding: .5rem 0;
+    justify-content: center;
+    height: auto;
+}
+
+.main__models-menu{
+    right: 0;
+    --menu-width: 16rem;
+}
+
+.main__write-code-menu,
+.main__git-menu,
+.main__pull-menu{
+    top: calc(100% + .5rem);
+    left: 50%;
+    translate: -50% 0;
+    --menu-width: 16rem;
+}
+
+.top-bar__avatar-menu-header{
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0 var(--space-2);
+    padding: var(--space-2);
+}
+
+.top-bar__avatar-menu-img-box{
+    grid-area: 1 / 1 / 3 / 2;
+    display: inline-flex;
+    align-items: center;
+}
+
+#avatar-menu > div > div > button{
+    border-radius: var(--radius-md);
+    padding: 0 .5rem;
+    border: none;
+    grid-area: 1 / 3 / 3 / 4;
+    display: inline-flex;
+    align-items: center;
+}
+
+#avatar-menu > ul > li:nth-child(1) > button,
+#avatar-menu > ul > li:nth-child(13) > button{
+    border: none;
+    border-radius: var(--radius-md);
+    color: var(--color-fg-default);
+}
+
+.top-bar__avatar-menu-img{
+    border-radius: 100%;
+}
+
+.top-bar__avatar-menu-login{
+    grid-area: 1 / 2 / 2 / 3;
+    font-weight: 600;
+}
+
+.top-bar__avatar-menu-name{
+    grid-area: 2 / 2 / 3 / 3;
+    font-size: var(--text-xs);
+    color: var(--color-fg-muted);
+}
+
+.top-bar__avatar-menu-switch{
+    padding: .25rem;
+    color: var(--color-fg-muted);
+    border-radius: var(--radius-md);
+}
+
+.left-bar__button-hidde,
+.left-bar__button-show-search{
+    display: inline-flex;
+    align-items: center;
+}
+
+.left-bar__bottom-items-list li.search-repo-input-menu-box-li{
+    padding: .25rem .5rem .25rem 0;
+}
+
+.top-bar__avatar-menu-box-button{
+    display: flex;
 }
