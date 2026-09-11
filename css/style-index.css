@@ -8,6 +8,7 @@
      02.    Reinicio
      03.    Elementos
      04.    Accesibilidad
+     
      05.    TOP-BAR
      06.    ASIDE
      07.    MAIN-COPILOT
@@ -17,7 +18,7 @@
      11.    SCROLL
      12-15. @MEDIA
      16-18. @HTML-FROM-JAVASCRIPT
-     19.    REPOSITORIOS GUARDADOS (pintados desde JS)
+     19.    REPOSITORIOS-GUARDADOS (pintados desde JS)
 
    ========================================================================== */
 
@@ -25,11 +26,6 @@
 /* --------------------------------------------------------------------------
    1. VARIABLES
    -------------------------------------------------------------------------- */
-
-/* El CSS ya no pregunta al sistema operativo: mira el atributo data-theme
-   que el JS cuelga del <html>. Asi el boton de cambiar tema puede mandar
-   sobre la preferencia del sistema, que es lo que se espera de un boton.
-   Quien decide el valor de ese atributo es script-index.js. */
 
 :root,
 :root[data-theme="dark"] {
@@ -67,9 +63,8 @@
     /* Sombras */
     --shadow-overlay: 0 8px 24px rgba(1, 4, 9, 0.8);
 
-    /* Tipografia */
-    --text-xs: 0.875rem;       /* 14px */
-    --text-sm: 1rem;           /* 16px */
+    --text-xs: 0.75rem;        /* 12px — metadatos, texto de apoyo */
+    --text-sm: 0.875rem;       /* 14px — texto normal, el base del sitio */
 
     /* Esquinas */
     --radius-sm: 4px;
@@ -138,7 +133,7 @@ body {
     min-height: 100dvh;
     font-family: "Mona Sans VF", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans Backtick Fix", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
     background-color: var(--color-canvas-default);
-    font-size: 1.125rem;
+    font-size: var(--text-sm);      /* 14px, como github.com */
     line-height: 1.5;
     color: var(--color-fg-default);
     -webkit-font-smoothing: antialiased;

@@ -31,16 +31,13 @@ function setTheme(theme){
    document.documentElement.setAttribute("data-theme", theme)
 }
 
-/* Igual, pero ademas lo recuerda. Solo para cuando el usuario ELIGE: si
-   guardaramos tambien la deteccion automatica, la web dejaria de seguir
-   al sistema operativo despues de la primera visita. */
+/* Recuerda el tema */
 function chooseTheme(theme){
    setTheme(theme)
    localStorage.setItem(THEME_KEY, theme)
 }
 
-/* Que tema toca al arrancar: lo que eligio el usuario, y si nunca eligio
-   nada, lo que pida su sistema. */
+/* Que tema toca al arrancar. */
 function getInitialTheme(){
    const saved = localStorage.getItem(THEME_KEY)
    if (saved) return saved
@@ -48,17 +45,14 @@ function getInitialTheme(){
    return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"
 }
 
-// Se aplica aqui, nada mas leerse el archivo, y no dentro de initSharedUI:
-// initSharedUI espera a que lleguen los partials, y hasta entonces se veria
-// un parpadeo con el tema equivocado.
+
 setTheme(getInitialTheme())
 
 function initSharedUI() {
 
    getRepos().forEach((repo) => storageRender(repo))
 
-   /* --- Referencias a elementos del HTML ---
-   Se buscan una sola vez, al arrancar, y se reutilizan siempre. */
+   /* --- Referencias a elementos del HTML --- */
    
    const asideBackdrop = document.querySelector(".backdrop-left-bar")
    const buttonShowMenuLeft = document.getElementById("top-bar__toggle-bar-left")
