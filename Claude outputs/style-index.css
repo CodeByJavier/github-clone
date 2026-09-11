@@ -26,22 +26,19 @@
    1. VARIABLES
    -------------------------------------------------------------------------- */
 
-/* El CSS ya no pregunta al sistema operativo: mira el atributo data-theme
-   que el JS cuelga del <html>. Asi el boton de cambiar tema puede mandar
-   sobre la preferencia del sistema, que es lo que se espera de un boton.
-   Quien decide el valor de ese atributo es script-index.js. */
-
-:root,
-:root[data-theme="dark"] {
+:root {
 
     /* Superficies */
     --color-canvas-default: #0d1117;
+    --color-canvas-subtle: #151b23;
     --color-header-bg: #010409;
+    --color-overlay-bg: #151b23;
 
     /* Texto */
     --color-fg-default: #f0f6fc;
     --color-fg-muted: #9198a1;
     --color-fg-subtle: #656c76;
+    --color-fg-on-emphasis: #ffffff;
 
     /* Bordes */
     --color-border-default: #3d444d;
@@ -51,6 +48,11 @@
     --color-accent-fg: #4493f8;
     --color-accent-emphasis: #1f6feb;
 
+    /* Estados — los colores que ya usabas a mano dentro del JS. */
+    --color-success-fg: #3fb950;
+    --color-danger-fg: #f85149;
+    --color-danger-muted: rgba(248, 81, 73, 0.1);
+
     /* Botones */
     --color-btn-bg: #212830;
     --color-btn-hover-bg: #262c36;
@@ -59,66 +61,85 @@
     --color-btn-primary-hover-bg: #29903b;
     --color-btn-primary-border: rgba(255, 255, 255, 0.15);
 
-    /* Estados de formulario. El JS tambien los usa: no los pongas a pelo. */
-    --color-success-fg: #3fb950;
-    --color-danger-fg: #f85149;
-    --color-danger-muted: rgba(248, 81, 73, 0.1);
-
     /* Sombras */
     --shadow-overlay: 0 8px 24px rgba(1, 4, 9, 0.8);
 
-    /* Tipografia */
+    /* Tipografía */
+    --font-sans: "Mona Sans VF", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans Backtick Fix", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+
     --text-xs: 0.875rem;       /* 14px */
     --text-sm: 1rem;           /* 16px */
+    --text-base: 1.125rem;     /* 18px */
+
+    --leading-tight: 1.25;
+    --leading-normal: 1.5;
+
+    /* Espaciado — escala de 4 en 4. */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 24px;
+    --space-6: 32px;
+    --space-7: 48px;
 
     /* Esquinas */
     --radius-sm: 4px;
     --radius-md: 6px;
     --radius-lg: 12px;
 
-    /* La curva del hover */
-    --transition-btn: 80ms cubic-bezier(.65, 0, .35, 1);
+    /* Capas */
+    --layer-sticky: 10;
+    --layer-overlay: 100;
+    --layer-modal: 1000;
 
     --header-height: 4rem;
-    --menu-width: 15rem;   
+    --menu-width: 15rem;
 }
 
-/* Tema claro. */
-:root[data-theme="light"] {
-    /* Superficies */
-    --color-canvas-default: #ffffff;   /* fondo de la pagina */
-    --color-header-bg: #ffffff;        /* barra superior */
+/* Tema claro. Solo se redefinen las variables: ni una sola regla de
+   componente se repite aqui abajo.
+   [FIX] Estaba escrito como "prefers-color-scheme: dark", asi que a quien
+   tenia el sistema en oscuro le salia el tema claro, y al reves. */
+@media (prefers-color-scheme: light) {
+    :root {
+        /* Superficies */
+        --color-canvas-default: #ffffff;   /* fondo de la página */
+        --color-canvas-subtle: #f6f8fa;    /* fondo de cajas y campos */
+        --color-header-bg: #ffffff;        /* barra superior */
+        --color-overlay-bg: #ffffff;       /* menús, cajón lateral, buscador */
 
-    /* Texto */
-    --color-fg-default: #1f2328;       /* texto normal */
-    --color-fg-muted: #59636e;         /* texto secundario, iconos */
-    --color-fg-subtle: #818b98;        /* texto de apoyo */
+        /* Texto */
+        --color-fg-default: #1f2328;       /* texto normal */
+        --color-fg-muted: #59636e;         /* texto secundario, iconos */
+        --color-fg-subtle: #818b98;        /* texto de apoyo */
+        --color-fg-on-emphasis: #ffffff;   /* texto sobre un fondo de color */
 
-    /* Bordes */
-    --color-border-default: #d1d9e0;
-    --color-border-muted: #d1d9e0b3;
+        /* Bordes */
+        --color-border-default: #d1d9e0;
+        --color-border-muted: #d1d9e0b3;
 
-    /* Acentos */
-    --color-accent-fg: #0969da;        /* enlaces */
-    --color-accent-emphasis: #0969da;  /* foco, elemento activo */
+        /* Acentos */
+        --color-accent-fg: #0969da;        /* enlaces */
+        --color-accent-emphasis: #0969da;  /* foco, elemento activo */
 
-    /* Botones */
-    --color-btn-bg: #f6f8fa;
-    --color-btn-hover-bg: #eff2f5;
-    --color-btn-border: #1f232826;
-    --color-btn-primary-bg: #1f883d;
-    --color-btn-primary-hover-bg: #1c8139;
-    --color-btn-primary-border: rgba(31, 35, 40, 0.15);
+        /* Estados */
+        --color-success-fg: #1a7f37;
+        --color-danger-fg: #cf222e;
+        --color-danger-muted: rgba(207, 34, 46, 0.1);
 
-    /* Estados de formulario */
-    --color-success-fg: #1a7f37;
-    --color-danger-fg: #cf222e;
-    --color-danger-muted: rgba(207, 34, 46, 0.1);
+        /* Botones */
+        --color-btn-bg: #f6f8fa;
+        --color-btn-hover-bg: #eff2f5;
+        --color-btn-border: #1f232826;
+        --color-btn-primary-bg: #1f883d;
+        --color-btn-primary-hover-bg: #1c8139;
+        --color-btn-primary-border: rgba(31, 35, 40, 0.15);
 
-    /* Sombras */
-    --shadow-overlay: 0 8px 24px rgba(31, 35, 40, 0.12);
+        /* Sombras */
+        --shadow-overlay: 0 8px 24px rgba(31, 35, 40, 0.12);
+    }
 }
-
 
 /* --------------------------------------------------------------------------
    2. REINICIO
@@ -136,15 +157,16 @@
 
 body {
     min-height: 100dvh;
-    font-family: "Mona Sans VF", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans Backtick Fix", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-family: var(--font-sans);
     background-color: var(--color-canvas-default);
-    font-size: 1.125rem;
-    line-height: 1.5;
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
     color: var(--color-fg-default);
     -webkit-font-smoothing: antialiased;
 }
 
-img {
+img,
+video {
     display: block;
     max-width: 100%;
 }
@@ -197,7 +219,7 @@ textarea {
 h1, h2, h3, h4, h5, h6 {
     font-size: inherit;
     font-weight: 600;
-    line-height: 1.25;
+    line-height: var(--leading-tight);
 }
 
 a {
@@ -241,8 +263,9 @@ fieldset {
     padding: 0;
 }
 
+/* Utilidad de boton. [FIX] Estaba suelta dentro de la seccion de VARIABLES. */
 .btn{
-    transition: background-color var(--transition-btn);
+    transition: background-color 80ms cubic-bezier(.65, 0, .35, 1);
 }
 
 .btn:hover{
@@ -370,7 +393,7 @@ fieldset {
 
 .top-bar__search-button span{
     font-size: var(--text-sm);
-    padding-inline-end: 24px;
+    padding-inline-end: var(--space-5);
 }
 
 .top-bar__search-button span kbd{
@@ -513,7 +536,7 @@ fieldset {
 .aside__add-repositories-button{
     display: flex;
     align-items: center;
-    color: #ffffff;
+    color: var(--color-fg-on-emphasis);
 
     padding: 0 .5rem 0 .5rem;
     line-height: 1.75rem;
@@ -521,7 +544,7 @@ fieldset {
     background-color: var(--color-btn-primary-bg);
     border: solid var(--color-btn-primary-border) 1px;
     border-radius: var(--radius-md);
-    transition: background-color var(--transition-btn);
+    transition: background-color 80ms cubic-bezier(.65, 0, .35, 1);
 }
 
 .aside__add-repositories-button:hover{
@@ -593,7 +616,7 @@ fieldset {
 
 .aside__box-button-show button{
     margin-top: 1.2rem;
-    transition: color var(--transition-btn);
+    transition: color 80ms cubic-bezier(.65, 0, .35, 1);
 }
 
 .aside__box-button-show button:hover{
@@ -613,7 +636,7 @@ main{
     grid-area: principal;
     display: flex;
     flex-direction: column;
-    max-width: calc(648px + 16px * 2);
+    max-width: calc(648px + var(--space-4) * 2);
     margin-inline: auto;
 }
 
@@ -843,7 +866,7 @@ main .main__top-content{
     margin: .5rem 0 1rem 0;
 
     right: 0;
-    left: calc(40.5rem + 16px * 2);
+    left: calc(40.5rem + var(--space-4) * 2);
     margin-inline: auto;
     
     font-size: var(--text-sm);
@@ -941,7 +964,7 @@ main .main__top-content{
     margin-right: .5rem;
     border: solid var(--color-btn-primary-border) 1px;
     background-color: var(--color-btn-primary-bg);
-    transition: background-color var(--transition-btn);
+    transition: background-color 80ms cubic-bezier(.65, 0, .35, 1);
 }
 
 .main__menu__button-save button:last-child:hover{
@@ -1063,7 +1086,7 @@ main .main__top-content{
 
 footer{
     grid-area: pie;
-    max-width: calc(648px + 16px * 2);
+    max-width: calc(648px + var(--space-4) * 2);
     margin-inline: auto;
     padding: 2rem 0 3rem 0;
     line-height: 1.125rem;
@@ -1131,18 +1154,18 @@ footer{
 }
 /* Fondo de la barra */
 ::-webkit-scrollbar-track {
-  background: var(--color-canvas-default);
+  background: #2e2a2a;
 
 }
 /* Thumb de la barra */
 ::-webkit-scrollbar-thumb {
-  background: var(--color-border-default);
+  background: #929191;
   border-radius: 6px;
-  border: 1px solid var(--color-canvas-default);
+  border: 1px solid #ac9191;
 }
 /* Efecto hover */
 ::-webkit-scrollbar-thumb:hover {
-  background-color: var(--color-fg-subtle);
+  background-color: #555;
 }
 
 /* --------------------------------------------------------------------------
@@ -1198,6 +1221,9 @@ footer{
         left: 0;
         width: 100%;
     }
+    /* [FIX] Aqui habia un ".main__ask-box-module button, #repositories-button
+       { padding: 0 0.3rem }" identico al de la @media de 1024px. A 938px esa
+       otra ya se esta aplicando, asi que este era puro ruido. */
 }
 
 /* --------------------------------------------------------------------------
@@ -1329,7 +1355,7 @@ footer{
     .main__mobile-box-button-show button{
         display: flex;
         align-items: center;
-        transition: color var(--transition-btn);
+        transition: color 80ms cubic-bezier(.65, 0, .35, 1);
     }
 
     .main__mobile-box-button-show button:hover{
@@ -1355,11 +1381,11 @@ footer{
         position: fixed;
         inset: 0;
         background-color: rgba(1, 4, 9, 0.6);
-        z-index: 100;
+        z-index: var(--layer-overlay);
     }
 
     .main__toggle-box{
-        z-index: 1000;
+        z-index: var(--layer-modal);
     }
 
     #close-avatar{
@@ -1413,7 +1439,7 @@ footer{
     display: flex;
     position: fixed;
     inset: 0;
-    background-color: rgba(1, 4, 9, 0.6);
+    background-color: rgba(17, 22, 32, 0.511);
     z-index: 1000;
 }
 
@@ -1583,7 +1609,7 @@ footer{
     border-radius: var(--radius-lg);
     border: var(--color-border-default) solid 1px;
 
-    z-index: 1000;
+    z-index: var(--layer-modal);
     animation: smooth .2s ease-in-out;
 }
 
@@ -1742,16 +1768,16 @@ footer{
 
 .menu{
     position: absolute;
-    z-index: 100; 
+    z-index: var(--layer-overlay); 
     width: var(--menu-width);
-    max-width: calc(100vw - 16px);
-    max-height: calc(100vh - var(--header-height) - 16px);
+    max-width: calc(100vw - var(--space-4));
+    max-height: calc(100vh - var(--header-height) - var(--space-4));
     overflow-y: auto;
     overscroll-behavior: contain;
 
     padding: .5rem;
     font-size: var(--text-sm);
-    line-height: 1.5;
+    line-height: var(--leading-normal);
     color: var(--color-fg-default);
     text-align: left;
     background-color: var(--color-header-bg);
@@ -1786,7 +1812,7 @@ footer{
     border-radius: var(--radius-md);
     cursor: pointer;
 
-    transition: background-color var(--transition-btn);
+    transition: background-color 80ms cubic-bezier(.65, 0, .35, 1);
 }
 
 .menu__content:hover{
@@ -1810,8 +1836,8 @@ footer{
     flex-shrink: 0;
     padding: .25rem .5rem;
     font-size: var(--text-xs);
-    line-height: 1.25;
-    color: #ffffff;
+    line-height: var(--leading-tight);
+    color: var(--color-fg-on-emphasis);
     border: var(--color-border-default) 1px solid;
     border-radius: 2rem;
 }
@@ -1845,6 +1871,8 @@ footer{
     --menu-width: 18rem;
 }
 
+/* [FIX] Estaba declarado dos veces. El segundo bloque ponia "left: 0",
+   que anulaba al "left: 50%" del primero. Fusionado en uno. */
 .main__ask-menu,
 .main__repositories-menu{
     top: calc(100% + .5rem);
@@ -1852,6 +1880,10 @@ footer{
     --menu-width: 16rem;
 }
 
+/* [FIX] Tambien duplicado. El segundo bloque ponia "right: 0", pero como
+   .menu ya tiene "width" fijo, el navegador ignora "right" cuando hay un
+   "left" — asi que mandaba este "left: -70%". El otro bloque era codigo
+   muerto y lo he quitado. */
 .main__models-menu{
     top: calc(100% + 1rem);
     left: -70%;
@@ -1877,8 +1909,8 @@ footer{
     display: grid;
     grid-template-columns: auto minmax(0, 1fr) auto;
     align-items: center;
-    gap: 0 .5rem;
-    padding: .5rem;
+    gap: 0 var(--space-2);
+    padding: var(--space-2);
 }
 
 .top-bar__avatar-menu-img-box{
@@ -1942,30 +1974,25 @@ footer{
    19. REPOSITORIOS GUARDADOS (pintados desde JS)
    -------------------------------------------------------------------------- */
 
+/* El mismo <li> se inyecta en las cuatro listas (aside, barra superior,
+   main movil y menu lateral), por eso las clases no llevan prefijo de
+   bloque: describen el componente, no donde vive. */
+
 .item-to-search-js{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: .5rem;
+    gap: var(--space-2);
 
-    padding: .3rem;
+    padding: var(--space-2);
     border-radius: var(--radius-md);
     font-size: var(--text-xs);
 
-    transition: background-color var(--transition-btn);
+    transition: background-color 80ms cubic-bezier(.65, 0, .35, 1);
 }
 
 .item-to-search-js:hover{
     background-color: var(--color-btn-hover-bg);
-}
-
-#toggle-menu-list > li.item-to-search-js,
-#list-aside-search > li{
-    padding: .3rem;
-    
-}
-#list-aside-search > li > div{
-    margin: 0;
 }
 
 /* -- 19.1 NOMBRE DEL REPOSITORIO -- */
@@ -1973,7 +2000,11 @@ footer{
 .box-name-js{
     display: flex;
     align-items: center;
-    gap: .5rem;
+    gap: var(--space-2);
+
+    /* min-width: 0 permite que esta caja se encoja por debajo de su
+       contenido. Sin esto, un nombre largo empuja el boton de borrar
+       fuera del <li> en vez de cortarse con puntos suspensivos. */
     min-width: 0;
 }
 
@@ -1984,12 +2015,15 @@ footer{
 
 .repositories-link-js{
     font-weight: 600;
+
+    /* Los nombres pueden llegar a 100 caracteres: los cortamos en una linea. */
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
 .repositories-link-js:hover{
+    color: var(--color-accent-fg);
     text-decoration: underline;
 }
 
@@ -2012,8 +2046,8 @@ footer{
 
     border-radius: var(--radius-md);
     color: var(--color-fg-muted);
-    transition: color var(--transition-btn),
-                background-color var(--transition-btn);
+    transition: color 80ms cubic-bezier(.65, 0, .35, 1),
+                background-color 80ms cubic-bezier(.65, 0, .35, 1);
 }
 
 .item-to-search-js .delete:hover{

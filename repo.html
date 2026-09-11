@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio · Clon de GitHub</title>
+    <link rel="stylesheet" href="css/style-index.css">
+    <link rel="stylesheet" href="css/style-repo.css">
+</head>
+<body id="body">
+
+    <div id="header-placeholder"></div>
+
+    <div class="box-main" id="main-aside">
+        
+        <div id="toggle-menu-placeholder"></div>
+
+        <div class="main-box">
+            <main id="main">
+                <div class="form__container-heading">
+                    <div class="form__heading">
+                        <h1>Crear un nuevo repositorio</h1>
+                        <p>
+                            Los repositorios contienen los archivos y el historial de versiones de un proyecto. 
+                            ¿Tienes un proyecto en otro sitio? <a>Importa un repositorio</a>.
+                        </p>
+                    </div>
+                    <p><em>Los campos obligatorios están marcados con un asterisco (*).</em></p>
+                </div>
+                <form action="" class="form">
+                    <div class="form__container-body">
+                        <div class="form__create-repo">
+
+                            <div class="time-line"><span>1</span></div>
+
+                            <div class="form__create-repo-body">
+                                <div class="form__create-repo-header">
+                                    <h2>General</h2>
+                                </div>
+                                <div class="form__create-fieldset">
+                                    <fieldset>
+                                        <legend></legend>
+                                    </fieldset>
+                                    <div class="form__create-box">
+                                        <div class="form__create-owner">
+                                            <label>Propietario *</label>
+                                            <button class="btn" type="button" aria-label="CodeByJavier, propietario (Obligatorio)" aria-expanded="false">
+                                                <img data-component="Avatar" class="prc-Avatar-Avatar-0xaUi" alt="" width="20" height="20" data-testid="github-avatar" src="https://avatars.githubusercontent.com/u/131628148?v=4&amp;size=40" style="--avatarSize-regular: 20px;">
+                                                <span>CodeByJavier</span>
+                                                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z"></path></svg>
+                                            </button>
+                                        </div>
+                                        <span>/</span>
+                                        <div class="form__create-name">
+                                            <label for="input-name">Nombre del repositorio *</label>
+                                            <input id="input-name" name="name" aria-required="true" type="text" value="">
+
+                                            <div id="message" class="form__create-name-message">
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="form__create-idea">
+                                        <p>Los nombres de los grandes repositorios son cortos y memorables. ¿Qué tal si
+                                            <a id="name-idea">Repo-Name</a>?
+                                        </p>
+                                    </div>
+                                    <div class="form__create-description">
+                                        <label for="input-description">Descripción</label>
+                                        <input id="input-description" type="text" name="description">
+                                        <p id="description-string">0 / 350 caracteres</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form__create-config">
+
+                            <div class="time-line"><span>2</span></div>
+
+                            <div class="form__create-config-body">
+                                <div class="form__create-config-header">
+                                    <h2>Configuración</h2>
+                                </div>
+                                <div class="form__create-config-visibility">
+                                    <div class="form__create-config-visibility-header">
+                                        <h3>Elige visibilidad *</h3>
+                                        <p>Elige quién puede ver y compromete en este repositorio</p>
+                                    </div>
+                                    <div class="form__create-config-visibility-btn">
+                                        <button class="btn" type="button" aria-label="Visibilidad del repositorio" aria-expanded="false">
+                                            <span>
+                                                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path></svg>
+                                                Público
+                                            </span>
+                                            <span>
+                                                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z"></path></svg>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="form__create-config-add-modules">
+
+                                    <div class="form__create-config-add--item">
+                                        <div class="form__create-config-add-header">
+                                            <h3>Añadir README</h3>
+                                            <p>Los README pueden usarse como descripciones más largas. <a>Acerca de los READMEs</a></p>
+                                        </div>
+                                        <div class="form__create-config-config-add-btn">
+                                            
+                                            <span id="switch-tag">Off</span>
+                                            <button id="switch" type="button" class="btn" aria-label="Añadir README" aria-expanded="false">
+                                                <span>
+                                                    <svg viewBox="0 0 24 24" width="16" height="24" fill="currentColor" aria-hidden="true">
+                                                        <path fill-rule="evenodd" d="M8 2a.75.75 0 0 1 .75.75v11.5a.75.75 0 0 1-1.5 0V2.75A.75.75 0 0 1 8 2Z"></path>
+                                                    </svg>
+                                                </span>
+                                                <span>
+                                                    <svg viewBox="0 0 24 24" width="16" height="24" fill="currentColor" aria-hidden="true">
+                                                        <path fill-rule="evenodd" d="M8 12.5a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12Z"></path>
+                                                    </svg>
+                                                </span>
+                                                <span id="switch-box"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="form__create-config-add--item">
+                                        <div class="form__create-config-add-header">
+                                            <h3>Añadir .gitignore</h3>
+                                            <p>.gitignore indica a git qué archivos no deben rastrear. <a>Sobre ignorar archivos</a></p>
+                                        </div>
+                                        <div class="form__create-config-config-add-btn">
+                                            <button class="btn" type="button" aria-label="Añadir .gitignore" aria-expanded="false">
+                                                <span>No .gitignore</span>
+                                                <span>
+                                                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z"></path></svg>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="form__create-config-add--item">
+                                        <div class="form__create-config-add-header">
+                                            <h3>Añadir licencia</h3>
+                                            <p>Las licencias explican cómo otros pueden usar tu código. <a>Sobre licencias</a></p>
+                                        </div>
+                                        <div class="form__create-config-config-add-btn">
+                                            <button class="btn" type="button" aria-label="Añadir licencia" aria-expanded="false">
+                                                <span>Sin licencia</span>
+                                                <span>
+                                                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z"></path></svg>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form__create-repo-btn">
+                            <button id="button-create-repo" class="btn" type="button" aria-label="Crear repositorio" aria-expanded="false">Crear repositorio</button>
+                        </div>
+                    </div>
+                </form>
+            </main>
+        </div>
+
+        <div id="footer-placeholder"></div>
+
+    </div>
+    </div>
+
+<script src="js/script-index.js"></script>
+<script src="js/load-partials.js"></script>
+<script src="js/create-repo.js"></script>
+
+
+</body>
+</html>
