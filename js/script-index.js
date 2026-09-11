@@ -322,11 +322,6 @@ function initSharedUI() {
 /* ================================================================================== */
 
    /* CAMBIAR ENTRE MODO DARK O LIGTH */
-   // Un toggle mira en que estado esta y pone el CONTRARIO. El codigo de
-   // antes recalculaba el tema desde cero en cada clic, asi que siempre
-   // llegaba al mismo resultado y nunca alternaba.
-   // La referencia se busca AQUI porque el boton vive en header.html, que
-   // todavia no existe cuando se lee este archivo.
    const switchLigthDark = document.getElementById("switch-ligth-dark")
 
    switchLigthDark?.addEventListener("click", () => {
@@ -345,8 +340,6 @@ function initSharedUI() {
       if (!repoName) return
 
       deleteRepo(repoName)
-
-      // El mismo repo esta pintado en las cuatro listas: hay que quitarlos todos.
       document.querySelectorAll(`[data-repo="${repoName}"]`).forEach((item) => item.remove())
    })
 
@@ -364,7 +357,6 @@ function storageRender(repo){
    ]
 
    lists.forEach((list) => {
-      // Cada pagina carga solo algunas de estas listas: saltamos las que falten.
       if (!list) return
 
       list.insertAdjacentHTML("beforeend", /*HTML*/ `

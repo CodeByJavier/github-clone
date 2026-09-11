@@ -1768,6 +1768,12 @@ footer{
     color: var(--color-fg-default);
 }
 
+#avatar-menu > div > div > a{
+    display: flex;
+    margin: 0;
+    padding: .5rem;
+}
+
 .menu__list,
 .menu__group-list{
     display: flex;
