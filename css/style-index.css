@@ -8,7 +8,7 @@
      02.    Reinicio
      03.    Elementos
      04.    Accesibilidad
-     
+
      05.    TOP-BAR
      06.    ASIDE
      07.    MAIN-COPILOT
@@ -63,8 +63,8 @@
     /* Sombras */
     --shadow-overlay: 0 8px 24px rgba(1, 4, 9, 0.8);
 
-    --text-xs: 0.75rem;        /* 12px — metadatos, texto de apoyo */
-    --text-sm: 0.875rem;       /* 14px — texto normal, el base del sitio */
+    --text-xs: 0.85rem;        
+    --text-sm: 0.975rem;       
 
     /* Esquinas */
     --radius-sm: 4px;
