@@ -4,7 +4,7 @@ Clon de la página de inicio y de la página de creación de repositorios de
 GitHub, construido con HTML, CSS y JavaScript. Sin frameworks, sin librerías,
 sin proceso de compilación.
 
-![Captura de la página de inicio](screenshot.png)
+![Captura de la página de inicio](screenshot.jpeg)
 
 **[Ver la demo](https://codebyjavier.github.io/github-clone/)**
 
@@ -13,7 +13,7 @@ sin proceso de compilación.
 ## Por qué existe este proyecto
 
 Es un ejercicio de práctica, no un producto. El objetivo es reproducir una
-interfaz real —con su maquetación responsive y su comportamiento— usando sólo
+interfaz real con su maquetación responsive y su comportamiento usando sólo
 las tres tecnologías base, sin apoyarme en ningún framework.
 
 Elegí la página de inicio de GitHub porque es de las más densas del sitio:
@@ -28,7 +28,7 @@ Estos son los tres grupos en los que clasifiqué cada elemento.
 
 **Implementado y funcional**
 
-- Maquetación completa y responsive de las dos páginas, con tres puntos de
+- Maquetación completa y responsive de las dos páginas (dashboard y new repo), con tres puntos de
   ruptura (1024px, 938px y 768px) y una versión de móvil con su propio menú
   lateral.
 - Apertura y cierre del cajón lateral, del buscador superior y de los nueve
@@ -46,7 +46,7 @@ Estos son los tres grupos en los que clasifiqué cada elemento.
 - Crear y borrar repositorios. Se guardan en `localStorage`, así que
   sobreviven a recargas y a cambiar de página.
 - Los repositorios guardados se pintan en las cuatro listas de la interfaz
-  (cajón lateral, barra superior, menú de móvil y vista de móvil), y
+  (aside, barra superior, menú lateral plegable y vista de móvil), y
   borrar uno lo quita de las cuatro a la vez.
 - Búsqueda y filtrado de esas listas, incluidos los repositorios creados
   desde la propia aplicación.
@@ -65,13 +65,13 @@ sin proceso de compilación.
 
 Todo vanilla a propósito: cuando no hay una herramienta que resuelva las
 cosas por ti, te toca entender por qué pasan. Buena parte de lo que aprendí
-en este proyecto salió justo de ahí — de los fallos que un framework habría
+en este proyecto salió justo de ahí, de los fallos que un framework habría
 tapado.
 
 ## Decisiones técnicas
 
-**Fragmentos compartidos cargados con `fetch`.** La barra superior, el cajón
-lateral, el menú de móvil y el pie viven una sola vez en `partials/`. Cada
+**Fragmentos compartidos cargados con `fetch`.** La barra superior, elmenú lateral plegable,
+el menú de móvil y el pie de pagina viven una sola vez en `partials/`. Cada
 página pone un `<div>` vacío como marcador y `load-partials.js` lo sustituye
 por el HTML correspondiente. Así la barra superior se escribe una vez y no
 una copia por página.
@@ -96,10 +96,6 @@ Y sólo son variables las que se lo ganan: las que cambian entre temas (que
 tienen que serlo a la fuerza) y las que se repiten muchas veces. Lo que se
 usaba dos o tres veces y siempre valía lo mismo está escrito directamente en
 su regla.
-
-**La escala tipográfica es la de GitHub.** Su base es de 14px, no los 16px
-que trae el navegador por defecto, así que toda la escala va un escalón por
-debajo de lo que uno escribiría por instinto.
 
 **Un solo oyente para los botones que aún no existen.** Los repositorios se
 pintan desde JavaScript, así que sus botones de borrar no existen cuando la
@@ -150,20 +146,14 @@ pide instalar nada.
 │   └── create-repo.js        # Validación del formulario de repo.html
 └── partials/
     ├── header.html           # Barra superior y sus menús
-    ├── aside.html            # Cajón lateral de repositorios
-    ├── toggle-menu.html      # Menú lateral de móvil
-    └── footer.html
+    ├── aside.html            # Aside
+    ├── toggle-menu.html      # Menú lateral plegable
+    └── footer.html           # Pie de pagina
 ```
 
 ## Próximos pasos
 
-- Mover a `localStorage` los repositorios que hoy están escritos a mano en los
-  fragmentos, para tener una sola fuente de verdad y poder filtrar los datos
-  en vez del DOM.
-- Impedir que se creen dos repositorios con el mismo nombre.
-- Repasar la navegación completa con teclado.
-- Migrar los scripts a módulos ES, ahora que el proyecto ya necesita servidor
-  de todas formas.
+CULMINADOS
 
 ## Créditos y licencias
 
